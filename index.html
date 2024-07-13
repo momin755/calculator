@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="shortcut icon" href="images/images.avif" type="image/x-icon">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .body{
+            height: 100vh;
+            background-image: linear-gradient(#4834d4, #30336b)
+            
+        }
+        .buttons{
+            text-align: center;
+        }
+        .buttons button{
+            color: #fff;
+            background: linear-gradient(rgba(0, 128, 0, 0.521), rgba(255, 166, 0, 0.664));
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            font-weight: 600;
+        }
+        
+        
+    </style>
+</head>
+<body>
+    <div class="body ">
+        <div class="py-20">
+            <div class="w-1/4 mx-auto bg-black calculator rounded-3xl place-items-center ">
+                <div class="">
+                    <input class="w-full px-1 py-3 pr-4 text-3xl font-bold text-right text-white bg-black rounded rounded-2xl" type="text" id="inputResult">
+                </div>
+                <div class="grid grid-cols-4 pb-2 my-1 mt-2 text-center gap-y-2 place-items-center buttons">
+                    <button onclick="reset()">AC</button>
+                    <button onclick="deletes()">DEL</button>
+                    <button onclick="insert('%')">%</button>
+                    <button onclick="insert('/')">/</button>
+                    <button onclick="insert('7')">7</button>
+                    <button onclick="insert('8')">8</button>
+                    <button onclick="insert('9')">9</button>
+                    <button onclick="insert('*')">*</button>
+                    <button onclick="insert('4')">4</button>
+                    <button onclick="insert('5')">5</button>
+                    <button onclick="insert('6')">6</button>
+                    <button onclick="insert('-')">-</button>
+                    <button onclick="insert('1')">1</button>
+                    <button onclick="insert('2')">2</button>
+                    <button onclick="insert('3')">3</button>
+                    <button onclick="insert('+')">+</button>
+                    <button onclick="insert('00')">00</button>
+                    <button onclick="insert('0')">0</button>
+                    <button onclick="insert('.')">.</button>
+                    <button onclick="calculate()">=</button>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="calculator.js"></script>
+    <script>
+      let input = document.getElementById('inputResult') ;
+
+        function insert(num){
+            input.value += num;
+        }
+        function reset(){
+            input.value ='';
+        }
+        function deletes(){
+            input.value = input.value.slice(0,-1)
+        }
+        function calculate(){
+            try{
+                input.value = eval(input.value)
+            }catch{
+                input.value = 'error'
+            }
+        }
+    </script>
+</body>
+</html>
